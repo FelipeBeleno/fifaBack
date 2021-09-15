@@ -49,7 +49,11 @@ const playersPost = async (req = request, res = response) => {
                 totalPages: parseInt(totalItems / 10),
                 Items: 10,
                 totalItems: totalItems,
-                players
+                players: players.map(p => {
+                    let { name, position, nation } = p
+
+                    return { name, position, nation }
+                })
             })
 
         }
