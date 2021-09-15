@@ -87,13 +87,25 @@ class Server {
 
     midelwares() {
 
+        let allowedOrigins = ['http://localhost:3001', 'http://localhost:3000', 'https://fifa-app-front.herokuapp.com/', 'https://fifa-app-node.herokuapp.com/']
+
         // parseo
         this.app.use(express.json());
 
         this.app.use(express.static('public'))
 
         this.app.use(cors({
-            origin: ['http://localhost:3001', 'http://localhost:3000', 'https://fifa-app-front.herokuapp.com/', 'https://fifa-app-node.herokuapp.com/']
+            origin: function (origin, callback) {
+                // allow requests with no origin 
+                // (like mobile apps or curl requests)
+                if (!origin) return callback(null, true);
+                if (allowedOrigins.indexOf(origin) === -1) {
+                    var msg = 'The CORS policy for this site does not ' +
+                        'allow access from the specified Origin.';
+                    return callback(new Error(msg), false);
+                }
+                return callback(null, true);
+            }
         }))
     }
 
