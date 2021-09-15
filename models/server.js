@@ -61,8 +61,8 @@ class Server {
                     let { name, position } = ply;
                     let team = ply.club.name.toLowerCase();
                     let nation = ply.nation.name
-                    
-                    name =  name.toLowerCase()
+
+                    name = name.toLowerCase()
 
                     let obj = {
                         name, position, team, nation
@@ -93,7 +93,7 @@ class Server {
         this.app.use(express.static('public'))
 
         this.app.use(cors({
-            origin: ['http://localhost:3001', 'http://localhost:3000', 'https://fifa-app-front.herokuapp.com/']
+            origin: ['http://localhost:3001', 'http://localhost:3000', 'https://fifa-app-front.herokuapp.com/', 'https://fifa-app-node.herokuapp.com/']
         }))
     }
 
