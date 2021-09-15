@@ -93,7 +93,7 @@ class Server {
         this.app.use(express.static('public'))
 
         this.app.use(cors({
-            origin: ['http://localhost:3001', 'http://localhost:3000']
+            origin: ['http://localhost:3001', 'http://localhost:3000', 'https://fifa-app-front.herokuapp.com/']
         }))
     }
 
